@@ -59,6 +59,44 @@ namespace IntList
           return true;
         }
 
+        public bool removeAll()
+        {
+          if (primerValor!=null)
+          {
+              primerValor = null;
+              return true;
+          }
+          else{
+            return false;
+          }
+        }
+        public bool contain(int a)
+        {
+          ListNode aux = primerValor, prev = null;
+
+          if (aux != null && aux.datos == a)
+          {
+            primerValor = aux.next;
+            return true;
+          }
+
+          while (aux != null && aux.datos != a)
+          {
+            prev = aux;
+            aux = aux.next ;
+          }
+
+          if (aux == null)
+          {
+            return false;
+          }else{
+
+            prev.next = aux.next;
+            return true;
+          }
+
+
+        }
       }
       public static void Main(string[] args)
       {
@@ -67,7 +105,7 @@ namespace IntList
         lista.agregar(3);
         lista.agregar(5);
         lista.agregar(1);
-        Console.WriteLine( lista.remove(6));
+        Console.WriteLine( lista.contain(5));
       }
     }
 }
