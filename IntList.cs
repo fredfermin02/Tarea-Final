@@ -34,6 +34,31 @@ namespace IntList
           primerValor = node;
           Cantidad++;
         }
+
+        public bool remove(int a)
+        {
+          ListNode aux = primerValor, prev = null;
+
+          if (aux != null && aux.datos == a)
+          {
+            primerValor = aux.next;
+            return true;
+          }
+
+          while (aux != null && aux.datos != a)
+          {
+            prev = aux;
+            aux = aux.next ;
+          }
+
+          if (aux == null)
+          {
+            return false;
+          }
+          prev.next = aux.next;
+          return true;
+        }
+
       }
       public static void Main(string[] args)
       {
@@ -42,6 +67,7 @@ namespace IntList
         lista.agregar(3);
         lista.agregar(5);
         lista.agregar(1);
+        Console.WriteLine( lista.remove(6));
       }
     }
 }
